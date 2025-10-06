@@ -37,10 +37,15 @@ if not exist "docs" mkdir docs
 echo.
 echo Setup complete! 
 echo.
-echo To start the service, run:
-echo   scripts\start_clipboard_service.bat
+echo Starting clipboard service...
 echo.
-echo Or run directly:
-echo   python src\robust_clipboard_service.py
+echo The service will now start monitoring your clipboard.
+echo Press Ctrl+C to stop the service when needed.
 echo.
-pause
+echo ==================================
+echo Service is starting...
+echo ==================================
+echo.
+
+REM Start the clipboard service
+python src\robust_clipboard_service.py

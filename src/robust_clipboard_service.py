@@ -50,8 +50,8 @@ class RobustClipboardService:
         self.logger = logging.getLogger(__name__)
         self.pieces_client = PiecesClient(host="http://localhost:39300")
         
-        # Only use .pieces directory for persistence
-        self.pieces_dir = Path.home() / ".pieces"
+        # Only use .clipboard-to-pieces directory for persistence
+        self.pieces_dir = Path.home() / ".clipboard-to-pieces"
         self.pieces_dir.mkdir(exist_ok=True)
         
         # Track processed clipboard items with timestamps
@@ -394,9 +394,9 @@ class RobustClipboardService:
             return None
     
     def save_to_pieces_dir(self, content_or_path, filename, content_type):
-        """Save files to .pieces directory only"""
+        """Save files to .clipboard-to-pieces directory only"""
         try:
-            # Create the file in .pieces directory
+            # Create the file in .clipboard-to-pieces directory
             file_path = self.pieces_dir / filename
             
             if content_type == "text":
@@ -489,9 +489,9 @@ class RobustClipboardService:
                 if asset_id:
                     self.logger.info(f"SUCCESS: {content_type.title()} content imported as {filename}")
                     self.logger.info(f"Asset ID: {asset_id}")
-                    self.logger.info(f"Files saved to .pieces directory")
+                    self.logger.info(f"Files saved to .clipboard-to-pieces directory")
                 else:
-                    self.logger.info(f"SUCCESS: {content_type.title()} content saved to .pieces directory")
+                    self.logger.info(f"SUCCESS: {content_type.title()} content saved to .clipboard-to-pieces directory")
                     self.logger.info(f"Note: API import failed, but file saved for Pieces.app auto-import")
                 
                 # Clean up old entries to prevent memory growth
@@ -571,14 +571,14 @@ def main():
         print("- Fixed duplicate detection (30 minute window)")
         print("- Fixed Windows + Shift + A screenshot detection")
         print("- Image compression for large screenshots")
-        print("- Files saved to: C:\\Users\\dash\\.pieces")
+        print("- Files saved to: C:\\Users\\dash\\.clipboard-to-pieces")
         print("=" * 60)
         
-        # Check .pieces directory
+        # Check .clipboard-to-pieces directory
         service = RobustClipboardService()
         
         if not service.pieces_dir.exists():
-            print(f"Creating .pieces directory: {service.pieces_dir}")
+            print(f"Creating .clipboard-to-pieces directory: {service.pieces_dir}")
             service.pieces_dir.mkdir(parents=True, exist_ok=True)
             print(f"Created: {service.pieces_dir}")
         
