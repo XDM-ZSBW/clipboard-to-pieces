@@ -2,6 +2,45 @@
 
 A lightweight clipboard monitoring service that automatically imports your clipboard content (text and images) into Pieces.app Drive for AI-powered memory management.
 
+## ⚠️ **SECURITY WARNING - READ BEFORE USE**
+
+**This service monitors and processes ALL clipboard content on your system. Use with extreme caution on development machines.**
+
+### **Critical Security Risks:**
+
+1. **🔐 Sensitive Data Exposure**: 
+   - **Passwords, API keys, tokens, and credentials** copied to clipboard will be captured
+   - **Private code, proprietary information** may be processed and stored
+   - **Personal data, financial information** could be logged or transmitted
+
+2. **🛡️ Development Environment Risks**:
+   - **Database connection strings** with credentials
+   - **SSH keys, certificates, and private keys**
+   - **Configuration files** containing sensitive settings
+   - **Debug information** with internal system details
+
+3. **📡 Data Transmission**:
+   - Content is sent to Pieces.app via PiecesOS API
+   - Images are compressed and uploaded to Pieces.app servers
+   - Text content is processed by Pieces.app's AI systems
+
+### **Recommended Usage Guidelines:**
+
+- ✅ **Use only on trusted, secure development machines**
+- ✅ **Review all clipboard content before copying sensitive data**
+- ✅ **Consider using a separate, isolated environment for testing**
+- ✅ **Regularly audit Pieces.app for any sensitive content**
+- ❌ **DO NOT use on production systems or shared workstations**
+- ❌ **DO NOT use when handling customer data or PII**
+- ❌ **DO NOT use when working with financial or healthcare data**
+
+### **Data Privacy Considerations:**
+
+- All imported content becomes part of your Pieces.app data
+- Pieces.app may use this data for AI training and improvement
+- Consider the privacy implications of your organization's data policies
+- Ensure compliance with your company's security and privacy requirements
+
 ## 🎯 What It Does
 
 This service runs in the background and automatically:
@@ -176,6 +215,34 @@ python -c "from pieces_os_client import PiecesClient; client = PiecesClient(); p
 # Monitor service activity
 Get-Content logs/robust_clipboard_service.log -Wait -Tail 20
 ```
+
+## 🔒 Security Best Practices
+
+### **Before Using This Service:**
+
+1. **Audit Your Development Environment**:
+   - Identify all sensitive data types you work with
+   - Review your organization's data handling policies
+   - Ensure you have permission to use clipboard monitoring tools
+
+2. **Implement Safeguards**:
+   - Use a dedicated development machine for testing
+   - Consider running in a virtual machine or container
+   - Set up regular cleanup of Pieces.app data
+   - Monitor Pieces.app for unexpected content
+
+3. **Emergency Procedures**:
+   - Know how to quickly stop the service: `scripts/stop_clipboard_service.bat`
+   - Understand how to delete content from Pieces.app
+   - Have a plan for handling accidental sensitive data capture
+
+### **If Sensitive Data is Accidentally Captured:**
+
+1. **Immediately stop the service**
+2. **Review Pieces.app for the captured content**
+3. **Delete any sensitive data from Pieces.app**
+4. **Consider changing any exposed credentials**
+5. **Report the incident according to your organization's policies**
 
 ## 🐛 Troubleshooting
 

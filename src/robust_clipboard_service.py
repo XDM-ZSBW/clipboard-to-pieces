@@ -561,6 +561,10 @@ def main():
         
         print("Robust Clipboard Monitoring Service")
         print("=" * 60)
+        print("⚠️  SECURITY WARNING: This service monitors ALL clipboard content!")
+        print("⚠️  Sensitive data (passwords, API keys, etc.) will be captured!")
+        print("⚠️  Use only on trusted development machines!")
+        print("=" * 60)
         print("This service monitors clipboard and imports:")
         print("- Text content -> as text assets (simple method)")
         print("- Screenshots -> as compressed binary file uploads (robust method)")
