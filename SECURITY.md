@@ -84,7 +84,7 @@ The security filter automatically detects and handles sensitive data in clipboar
 
 **Input:**
 ```
-export OPENAI_API_KEY=sk-1234567890abcdef1234567890abcdef1234567890abcdef
+export OPENAI_API_KEY=sk-[REDACTED_FOR_SECURITY]
 ```
 
 **Output (with redaction):**
@@ -96,7 +96,7 @@ export OPENAI_API_KEY=[REDACTED-OPENAI API KEY]
 
 **Input:**
 ```python
-DATABASE_URL = "postgresql://user:my_secret_password@localhost:5432/mydb"
+DATABASE_URL = "postgresql://user:[REDACTED_PASSWORD]@localhost:5432/mydb"
 ```
 
 **Output (with redaction):**
@@ -108,8 +108,8 @@ DATABASE_URL = "postgresql://user:[REDACTED-DATABASE PASSWORD]@localhost:5432/my
 
 **Input:**
 ```bash
-export AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
-export AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+export AWS_ACCESS_KEY_ID=[REDACTED_AWS_KEY]
+export AWS_SECRET_ACCESS_KEY=[REDACTED_AWS_SECRET]
 ```
 
 **Output (with redaction):**

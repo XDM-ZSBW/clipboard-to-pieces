@@ -19,27 +19,27 @@ def test_security_filter():
     test_cases = [
         {
             "name": "API Key",
-            "content": "Here is my API key: api_key=sk-1234567890abcdef1234567890abcdef",
+            "content": "Here is my API key: api_key=sk-[REDACTED_FOR_SECURITY]",
             "expected_sensitive": True
         },
         {
             "name": "Password in config",
-            "content": "database_config = {\n  'host': 'localhost',\n  'password': 'my_secret_password123'\n}",
+            "content": "database_config = {\n  'host': 'localhost',\n  'password': '[REDACTED_PASSWORD]'\n}",
             "expected_sensitive": True
         },
         {
             "name": "JWT Token",
-            "content": "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
+            "content": "Authorization: Bearer [REDACTED_JWT_TOKEN]",
             "expected_sensitive": True
         },
         {
             "name": "Database URL with password",
-            "content": "DATABASE_URL=postgresql://user:secretpassword123@localhost:5432/mydb",
+            "content": "DATABASE_URL=postgresql://user:[REDACTED_PASSWORD]@localhost:5432/mydb",
             "expected_sensitive": True
         },
         {
             "name": "AWS Keys",
-            "content": "AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE\nAWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+            "content": "AWS_ACCESS_KEY_ID=[REDACTED_AWS_KEY]\nAWS_SECRET_ACCESS_KEY=[REDACTED_AWS_SECRET]",
             "expected_sensitive": True
         },
         {
@@ -49,7 +49,7 @@ def test_security_filter():
         },
         {
             "name": "Environment export",
-            "content": "export STRIPE_SECRET_KEY=sk_live_1234567890abcdef1234567890abcdef",
+            "content": "export STRIPE_SECRET_KEY=sk_live_[REDACTED_FOR_SECURITY]",
             "expected_sensitive": True
         }
     ]
