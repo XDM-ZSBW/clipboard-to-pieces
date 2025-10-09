@@ -51,7 +51,11 @@ logging.basicConfig(
 )
 
 class SecurityFilterReloader(FileSystemEventHandler):
-    """File watcher for hot-reloading security filter changes"""
+    """File watcher for hot-reloading security filter changes
+    
+    This class monitors security_filter.py and security_config.json for changes
+    and automatically reloads the security filter without restarting the service.
+    """
     
     def __init__(self, service_instance):
         self.service = service_instance
@@ -88,21 +92,21 @@ class SecurityFilterReloader(FileSystemEventHandler):
                 
                 # Log the reload with clear indicators
                 reload_id = f"RELOAD-{self.reload_count:03d}"
-                self.service.logger.info(f"🔄 {reload_id}: Security filter HOT-RELOADED successfully!")
-                self.service.logger.info(f"🔄 {reload_id}: File changed: {os.path.basename(event.src_path)}")
-                self.service.logger.info(f"🔄 {reload_id}: New patterns loaded: {len(new_filter.patterns)} pattern groups")
-                self.service.logger.info(f"🔄 {reload_id}: Filter version: {id(new_filter)} (old: {id(old_filter)})")
+                self.service.logger.info(f"[RELOAD] {reload_id}: Security filter HOT-RELOADED successfully!")
+                self.service.logger.info(f"[RELOAD] {reload_id}: File changed: {os.path.basename(event.src_path)}")
+                self.service.logger.info(f"[RELOAD] {reload_id}: New patterns loaded: {len(new_filter.patterns)} pattern groups")
+                self.service.logger.info(f"[RELOAD] {reload_id}: Filter version: {id(new_filter)} (old: {id(old_filter)})")
                 
                 # Print to console for immediate feedback
-                print(f"\n🔄 {reload_id}: SECURITY FILTER HOT-RELOADED!")
-                print(f"🔄 {reload_id}: You are now on the NEW code path")
-                print(f"🔄 {reload_id}: Filter ID: {id(new_filter)}")
-                print(f"🔄 {reload_id}: Ready to test new patterns!\n")
+                print(f"\n[RELOAD] {reload_id}: SECURITY FILTER HOT-RELOADED!")
+                print(f"[RELOAD] {reload_id}: You are now on the NEW code path")
+                print(f"[RELOAD] {reload_id}: Filter ID: {id(new_filter)}")
+                print(f"[RELOAD] {reload_id}: Ready to test new patterns!\n")
                 
             except Exception as e:
-                self.service.logger.error(f"❌ HOT-RELOAD FAILED: {e}")
-                print(f"\n❌ HOT-RELOAD FAILED: {e}")
-                print("❌ Service continues with OLD code path\n")
+                self.service.logger.error(f"[ERROR] HOT-RELOAD FAILED: {e}")
+                print(f"\n[ERROR] HOT-RELOAD FAILED: {e}")
+                print("[ERROR] Service continues with OLD code path\n")
 
 class RobustClipboardService:
     def __init__(self):
@@ -234,28 +238,96 @@ class RobustClipboardService:
             return None
     
     def _start_file_watcher(self):
-        """Start file watcher for hot reloading security filter"""
+        """Start file watcher for hot reloading security filter
+        
+        This method initializes the watchdog observer to monitor for changes
+        in security_filter.py and security_config.json files.
+        """
         try:
-            self.file_observer = Observer()
-            event_handler = SecurityFilterReloader(self)
+            # Use Windows-specific approach to avoid threading issues
+            import threading
+            import time
             
-            # Watch the src directory for changes
-            src_dir = Path(__file__).parent
-            self.file_observer.schedule(event_handler, str(src_dir), recursive=False)
+            # Create a simple polling-based file watcher instead of watchdog
+            self.file_watcher_active = True
+            self.watched_files = {
+                'security_filter.py': Path(__file__).parent / 'security_filter.py',
+                'security_config.json': Path(__file__).parent.parent / 'security_config.json'
+            }
+            self.file_timestamps = {}
             
-            # Also watch the parent directory for security_config.json
-            parent_dir = src_dir.parent
-            self.file_observer.schedule(event_handler, str(parent_dir), recursive=False)
+            # Initialize timestamps
+            for name, path in self.watched_files.items():
+                if path.exists():
+                    self.file_timestamps[name] = path.stat().st_mtime
             
-            self.file_observer.start()
-            self.logger.info("🔥 File watcher started - Security filter hot-reloading ENABLED")
-            self.logger.info(f"🔥 Watching: {src_dir} and {parent_dir}")
-            print("🔥 HOT-RELOAD ENABLED: Edit security_filter.py or security_config.json to reload!")
+            def file_watcher_loop():
+                reload_count = 0
+                while self.file_watcher_active:
+                    try:
+                        for name, path in self.watched_files.items():
+                            if path.exists():
+                                current_mtime = path.stat().st_mtime
+                                if name in self.file_timestamps and current_mtime > self.file_timestamps[name]:
+                                    # File changed!
+                                    reload_count += 1
+                                    reload_id = f"RELOAD-{reload_count:03d}"
+                                    
+                                    try:
+                                        # Reload the security filter module
+                                        import security_filter
+                                        importlib.reload(security_filter)
+                                        
+                                        # Create new filter instance
+                                        old_filter = self.security_filter
+                                        new_filter = security_filter.SecurityFilter(
+                                            enable_redaction=old_filter.enable_redaction if old_filter else True,
+                                            skip_sensitive=old_filter.skip_sensitive if old_filter else False
+                                        )
+                                        
+                                        # Update service with new filter
+                                        self.security_filter = new_filter
+                                        
+                                        # Log the reload with clear indicators
+                                        self.logger.info(f"[RELOAD] {reload_id}: Security filter HOT-RELOADED successfully!")
+                                        self.logger.info(f"[RELOAD] {reload_id}: File changed: {name}")
+                                        self.logger.info(f"[RELOAD] {reload_id}: New patterns loaded: {len(new_filter.patterns)} pattern groups")
+                                        self.logger.info(f"[RELOAD] {reload_id}: Filter version: {id(new_filter)} (old: {id(old_filter)})")
+                                        
+                                        # Print to console for immediate feedback
+                                        print(f"\n[RELOAD] {reload_id}: SECURITY FILTER HOT-RELOADED!")
+                                        print(f"[RELOAD] {reload_id}: You are now on the NEW code path")
+                                        print(f"[RELOAD] {reload_id}: Filter ID: {id(new_filter)}")
+                                        print(f"[RELOAD] {reload_id}: Ready to test new patterns!\n")
+                                        
+                                    except Exception as e:
+                                        self.logger.error(f"[ERROR] HOT-RELOAD FAILED: {e}")
+                                        print(f"\n[ERROR] HOT-RELOAD FAILED: {e}")
+                                        print("[ERROR] Service continues with OLD code path\n")
+                                    
+                                    # Update timestamp
+                                    self.file_timestamps[name] = current_mtime
+                                elif name not in self.file_timestamps:
+                                    self.file_timestamps[name] = current_mtime
+                        
+                        time.sleep(1)  # Check every second
+                        
+                    except Exception as e:
+                        self.logger.error(f"File watcher error: {e}")
+                        time.sleep(5)  # Wait longer on error
+            
+            # Start the file watcher in a separate thread
+            self.file_watcher_thread = threading.Thread(target=file_watcher_loop, daemon=True)
+            self.file_watcher_thread.start()
+            
+            self.logger.info("[HOT-RELOAD] File watcher started - Security filter hot-reloading ENABLED")
+            self.logger.info(f"[HOT-RELOAD] Watching: {list(self.watched_files.keys())}")
+            print("[HOT-RELOAD] ENABLED: Edit security_filter.py or security_config.json to reload!")
             
         except Exception as e:
-            self.logger.warning(f"File watcher failed to start: {e}")
+            self.logger.warning(f"File watcher setup failed: {e}")
             self.logger.info("Service will continue without hot-reloading")
-            self.file_observer = None
+            self.file_watcher_active = False
     
     def clear_processed_cache(self):
         """Clear the processed items cache for testing"""
@@ -734,9 +806,8 @@ class RobustClipboardService:
             self.logger.info("Service stopped")
         finally:
             # Cleanup file watcher
-            if self.file_observer:
-                self.file_observer.stop()
-                self.file_observer.join()
+            if hasattr(self, 'file_watcher_active'):
+                self.file_watcher_active = False
                 self.logger.info("File watcher stopped")
             
             self.pieces_client.close()
@@ -765,9 +836,9 @@ def main():
         
         print("Robust Clipboard Monitoring Service")
         print("=" * 60)
-        print("⚠️  SECURITY WARNING: This service monitors ALL clipboard content!")
-        print("⚠️  Sensitive data (passwords, API keys, etc.) will be captured!")
-        print("⚠️  Use only on trusted development machines!")
+        print("***  SECURITY WARNING: This service monitors ALL clipboard content!")
+        print("***  Sensitive data (passwords, API keys, etc.) will be captured!")
+        print("***  Use only on trusted development machines!")
         print("=" * 60)
         print("This service monitors clipboard and imports:")
         print("- Text content -> as text assets (simple method)")

@@ -10,6 +10,16 @@ from typing import List, Dict, Tuple, Optional
 from datetime import datetime
 
 class SecurityFilter:
+    """Security filter for detecting and redacting sensitive information
+    
+    This class provides comprehensive pattern matching for various types of sensitive data
+    including API keys, passwords, JWT tokens, database URLs, AWS credentials, and more.
+    
+    Hot-reload test: This comment was added to trigger the file watcher.
+    Hot-reload test #2: Testing the polling-based file watcher.
+    Hot-reload test #3: This should trigger RELOAD-002!
+    """
+    
     def __init__(self, enable_redaction=True, skip_sensitive=False):
         self.enable_redaction = enable_redaction
         self.skip_sensitive = skip_sensitive
