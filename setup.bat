@@ -21,13 +21,14 @@ python --version
 
 echo.
 echo Installing required dependencies...
-pip install -r requirements.txt
+pip install -r requirements.txt --disable-pip-version-check
 if %errorlevel% neq 0 (
     echo ERROR: Failed to install dependencies
     echo Please check your internet connection and try again
     pause
     exit /b 1
 )
+echo Dependencies installation completed successfully!
 
 echo.
 echo Creating necessary directories...

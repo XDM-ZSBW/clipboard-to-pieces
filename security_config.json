@@ -1,0 +1,19 @@
+{
+  "security_filter": {
+    "enabled": true,
+    "enable_redaction": true,
+    "skip_sensitive": false,
+    "custom_patterns": [
+      {
+        "pattern": "(?i)mycompany[_-]?secret\\s*[:=]\\s*[\"']?([^\"'\\s]+)[\"']?",
+        "name": "company_secret",
+        "group": "custom"
+      },
+      {
+        "pattern": "(?i)internal[_-]?api[_-]?key\\s*[:=]\\s*[\"']?([a-zA-Z0-9_-]{20,})[\"']?",
+        "name": "internal_api_key",
+        "group": "custom"
+      }
+    ]
+  }
+}

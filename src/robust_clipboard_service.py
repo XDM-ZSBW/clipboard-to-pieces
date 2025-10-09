@@ -21,6 +21,7 @@ from PIL import Image
 import io
 import win32clipboard
 import win32con
+from security_filter import SecurityFilter
 from pieces_os_client.wrapper import PiecesClient
 from pieces_os_client.models.classification_specific_enum import ClassificationSpecificEnum
 from pieces_os_client.models.fragment_metadata import FragmentMetadata
@@ -65,6 +66,9 @@ class RobustClipboardService:
         self.max_image_size = 100000  # 100KB limit
         self.max_dimensions = (1920, 1080)  # Max width/height
         
+        # Initialize security filter
+        self.security_filter = self._load_security_config()
+        
         self.logger.info("Robust Clipboard Monitoring Service Initialized")
         self.logger.info(f"Will import text as text, screenshots as compressed binary files")
         self.logger.info(f"Files will be saved in: {self.pieces_dir}")
@@ -73,6 +77,10 @@ class RobustClipboardService:
         else:
             self.logger.warning("No application available - image imports may fail")
         self.logger.info(f"Max image size: {self.max_image_size} bytes")
+        if self.security_filter:
+            self.logger.info("Security filtering enabled - sensitive data will be detected and redacted")
+        else:
+            self.logger.warning("Security filtering disabled - ALL clipboard content will be imported!")
     
     def _get_application(self):
         """Get the current application for asset creation"""
@@ -119,10 +127,60 @@ class RobustClipboardService:
             self.logger.error(f"Failed to create default application: {e}")
             return None
     
+    def _load_security_config(self):
+        """Load security configuration and initialize filter"""
+        try:
+            # Look for security config file
+            config_path = Path(__file__).parent.parent / "security_config.json"
+            
+            if not config_path.exists():
+                self.logger.warning("No security_config.json found - security filtering disabled")
+                return None
+            
+            with open(config_path, 'r') as f:
+                config = json.load(f)
+            
+            security_config = config.get('security_filter', {})
+            
+            if not security_config.get('enabled', False):
+                self.logger.warning("Security filtering disabled in config")
+                return None
+            
+            # Initialize security filter with config
+            security_filter = SecurityFilter(
+                enable_redaction=security_config.get('enable_redaction', True),
+                skip_sensitive=security_config.get('skip_sensitive', False)
+            )
+            
+            # Add custom patterns if configured
+            for pattern_config in security_config.get('custom_patterns', []):
+                try:
+                    security_filter.add_custom_pattern(
+                        pattern_config['pattern'],
+                        pattern_config['name'],
+                        pattern_config.get('group', 'custom')
+                    )
+                except Exception as e:
+                    self.logger.error(f"Failed to add custom pattern: {e}")
+            
+            self.logger.info("Security filter initialized successfully")
+            return security_filter
+            
+        except Exception as e:
+            self.logger.error(f"Failed to load security config: {e}")
+            self.logger.warning("Security filtering disabled due to config error")
+            return None
+    
     def clear_processed_cache(self):
         """Clear the processed items cache for testing"""
         self.processed_items.clear()
         self.logger.info("Processed items cache cleared")
+    
+    def get_security_statistics(self):
+        """Get security filter statistics if available"""
+        if self.security_filter:
+            return self.security_filter.get_statistics()
+        return None
     
     def detect_clipboard_content_type(self):
         """Detect if clipboard contains text or image data"""
@@ -260,15 +318,31 @@ class RobustClipboardService:
         try:
             self.logger.info(f"Importing text content ({len(text_content)} chars)")
             
+            # Apply security filtering if enabled
+            filtered_content = text_content
+            security_tags = []
+            
+            if self.security_filter:
+                filtered_content, should_skip, detected_items = self.security_filter.filter_content(text_content)
+                
+                if should_skip:
+                    self.logger.warning("SECURITY: Skipping text import due to sensitive content detection")
+                    return "SKIPPED_SENSITIVE"
+                
+                if detected_items:
+                    security_tags = ["security-filtered", "redacted"]
+                    self.logger.info(f"Applied security filtering: {len(detected_items)} items processed")
+            
             # Create metadata for text
+            tags = ["text", "clipboard", "auto-imported"] + security_tags
             metadata = FragmentMetadata(
                 ext=ClassificationSpecificEnum.TXT,
-                tags=["text", "clipboard", "auto-imported"],
+                tags=tags,
                 description=f"Text content captured from clipboard: {datetime.now().isoformat()}"
             )
             
-            # Create asset with text content (simple method)
-            asset_id = self.pieces_client.create_asset(text_content, metadata)
+            # Create asset with filtered content (simple method)
+            asset_id = self.pieces_client.create_asset(filtered_content, metadata)
             
             self.logger.info(f"SUCCESS: Text content imported with ID: {asset_id}")
             return asset_id
@@ -393,7 +467,7 @@ class RobustClipboardService:
                 self.logger.error(f"Response text: {e.response.text}")
             return None
     
-    def save_to_pieces_dir(self, content_or_path, filename, content_type):
+    def save_to_pieces_dir(self, content_or_path, filename, content_type, security_info=None):
         """Save files to .clipboard-to-pieces directory only"""
         try:
             # Create the file in .clipboard-to-pieces directory
@@ -405,7 +479,7 @@ class RobustClipboardService:
             else:
                 shutil.copy2(content_or_path, file_path)
             
-            # Create metadata file
+            # Create metadata file with security information
             metadata_path = self.pieces_dir / f"{filename}.pieces.json"
             metadata = {
                 "filename": filename,
@@ -413,6 +487,10 @@ class RobustClipboardService:
                 "timestamp": datetime.now().isoformat(),
                 "source": "clipboard_monitor"
             }
+            
+            # Add security information if available
+            if security_info:
+                metadata["security"] = security_info
             
             with open(metadata_path, "w", encoding="utf-8") as f:
                 json.dump(metadata, f, indent=2)
@@ -452,11 +530,35 @@ class RobustClipboardService:
             filename = self.create_filename(content_type)
             
             if content_type == "text":
-                # Import text content (simple method)
-                asset_id = self.import_text_content(content)
+                # Apply security filtering first if enabled
+                filtered_content = content
+                security_info = None
                 
-                # Save to .pieces directory
-                save_success = self.save_to_pieces_dir(content, filename, content_type)
+                if self.security_filter:
+                    filtered_content, should_skip, detected_items = self.security_filter.filter_content(content)
+                    
+                    if should_skip:
+                        self.logger.warning("SECURITY: Skipping clipboard item due to sensitive content")
+                        return None  # Skip processing entirely
+                    
+                    if detected_items:
+                        security_info = {
+                            "filtered": True,
+                            "detected_items": len(detected_items),
+                            "detection_types": list(set(item['type'] for item in detected_items)),
+                            "filter_timestamp": datetime.now().isoformat()
+                        }
+                        self.logger.info(f"Security filter applied: {len(detected_items)} sensitive items processed")
+                
+                # Import filtered text content
+                asset_id = self.import_text_content(filtered_content)
+                
+                # Handle special case where import was skipped due to sensitivity
+                if asset_id == "SKIPPED_SENSITIVE":
+                    return None
+                
+                # Save filtered content to .pieces directory
+                save_success = self.save_to_pieces_dir(filtered_content, filename, content_type, security_info)
                 
             elif content_type == "image":
                 # Save image to temporary file
@@ -469,7 +571,7 @@ class RobustClipboardService:
                     # Import image as compressed binary file (proper method)
                     asset_id = self.import_image_as_binary_file(temp_image_path, filename)
                     
-                    # Save original to .pieces directory
+                    # Save original to .pieces directory (images not filtered for now)
                     save_success = self.save_to_pieces_dir(temp_image_path, filename, content_type)
                     
                 finally:
@@ -547,6 +649,16 @@ class RobustClipboardService:
         finally:
             self.pieces_client.close()
             self.logger.info("Service shutdown complete")
+            
+            # Log security statistics if available
+            if self.security_filter:
+                stats = self.security_filter.get_statistics()
+                if stats['total_processed'] > 0:
+                    self.logger.info(f"Security Filter Statistics:")
+                    self.logger.info(f"  Total processed: {stats['total_processed']}")
+                    self.logger.info(f"  Sensitive detected: {stats['sensitive_detected']}")
+                    self.logger.info(f"  Items redacted: {stats['redacted_items']}")
+                    self.logger.info(f"  Items skipped: {stats['skipped_items']}")
 
 def main():
     # Create a lock file to prevent multiple instances (Windows compatible)

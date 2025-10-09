@@ -19,7 +19,7 @@ echo Checking dependencies...
 python -c "import pieces_os_client, pyperclip, PIL, win32clipboard" >nul 2>&1
 if %errorlevel% neq 0 (
     echo Installing required dependencies...
-    pip install -r requirements.txt
+    pip install -r requirements.txt --disable-pip-version-check
     if %errorlevel% neq 0 (
         echo ERROR: Failed to install dependencies
         echo Please check your internet connection and try again
@@ -28,6 +28,8 @@ if %errorlevel% neq 0 (
     )
     echo Dependencies installed successfully!
     echo.
+) else (
+    echo All dependencies are already installed.
 )
 
 echo Starting robust clipboard service...

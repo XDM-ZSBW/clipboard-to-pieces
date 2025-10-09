@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "pieces": {
+      "command": "python",
+      "args": [
+        "E:\\clipboard-to-pieces\\pieces_mcp_bridge.py"
+      ],
+      "env": {
+        "PIECES_OS_URL": "http://localhost:39300"
+      }
+    }
+  }
+}
