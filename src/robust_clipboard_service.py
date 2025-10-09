@@ -14,6 +14,8 @@ import logging
 import hashlib
 import sys
 import msvcrt
+import importlib
+import threading
 from datetime import datetime
 from pathlib import Path
 import pyperclip
@@ -22,6 +24,8 @@ import io
 import win32clipboard
 import win32con
 from security_filter import SecurityFilter
+from watchdog.observers import Observer
+from watchdog.events import FileSystemEventHandler
 from pieces_os_client.wrapper import PiecesClient
 from pieces_os_client.models.classification_specific_enum import ClassificationSpecificEnum
 from pieces_os_client.models.fragment_metadata import FragmentMetadata
@@ -46,6 +50,60 @@ logging.basicConfig(
     ]
 )
 
+class SecurityFilterReloader(FileSystemEventHandler):
+    """File watcher for hot-reloading security filter changes"""
+    
+    def __init__(self, service_instance):
+        self.service = service_instance
+        self.last_reload = datetime.now()
+        self.reload_count = 0
+        
+    def on_modified(self, event):
+        if event.is_directory:
+            return
+            
+        # Only watch for security filter changes
+        if event.src_path.endswith('security_filter.py') or event.src_path.endswith('security_config.json'):
+            try:
+                # Prevent rapid reloads (debounce)
+                if (datetime.now() - self.last_reload).total_seconds() < 2:
+                    return
+                
+                self.last_reload = datetime.now()
+                self.reload_count += 1
+                
+                # Reload the security filter module
+                import security_filter
+                importlib.reload(security_filter)
+                
+                # Create new filter instance
+                old_filter = self.service.security_filter
+                new_filter = security_filter.SecurityFilter(
+                    enable_redaction=old_filter.enable_redaction if old_filter else True,
+                    skip_sensitive=old_filter.skip_sensitive if old_filter else False
+                )
+                
+                # Update service with new filter
+                self.service.security_filter = new_filter
+                
+                # Log the reload with clear indicators
+                reload_id = f"RELOAD-{self.reload_count:03d}"
+                self.service.logger.info(f"🔄 {reload_id}: Security filter HOT-RELOADED successfully!")
+                self.service.logger.info(f"🔄 {reload_id}: File changed: {os.path.basename(event.src_path)}")
+                self.service.logger.info(f"🔄 {reload_id}: New patterns loaded: {len(new_filter.patterns)} pattern groups")
+                self.service.logger.info(f"🔄 {reload_id}: Filter version: {id(new_filter)} (old: {id(old_filter)})")
+                
+                # Print to console for immediate feedback
+                print(f"\n🔄 {reload_id}: SECURITY FILTER HOT-RELOADED!")
+                print(f"🔄 {reload_id}: You are now on the NEW code path")
+                print(f"🔄 {reload_id}: Filter ID: {id(new_filter)}")
+                print(f"🔄 {reload_id}: Ready to test new patterns!\n")
+                
+            except Exception as e:
+                self.service.logger.error(f"❌ HOT-RELOAD FAILED: {e}")
+                print(f"\n❌ HOT-RELOAD FAILED: {e}")
+                print("❌ Service continues with OLD code path\n")
+
 class RobustClipboardService:
     def __init__(self):
         self.logger = logging.getLogger(__name__)
@@ -68,6 +126,10 @@ class RobustClipboardService:
         
         # Initialize security filter
         self.security_filter = self._load_security_config()
+        
+        # Initialize file watcher for hot reloading
+        self.file_observer = None
+        self._start_file_watcher()
         
         self.logger.info("Robust Clipboard Monitoring Service Initialized")
         self.logger.info(f"Will import text as text, screenshots as compressed binary files")
@@ -170,6 +232,30 @@ class RobustClipboardService:
             self.logger.error(f"Failed to load security config: {e}")
             self.logger.warning("Security filtering disabled due to config error")
             return None
+    
+    def _start_file_watcher(self):
+        """Start file watcher for hot reloading security filter"""
+        try:
+            self.file_observer = Observer()
+            event_handler = SecurityFilterReloader(self)
+            
+            # Watch the src directory for changes
+            src_dir = Path(__file__).parent
+            self.file_observer.schedule(event_handler, str(src_dir), recursive=False)
+            
+            # Also watch the parent directory for security_config.json
+            parent_dir = src_dir.parent
+            self.file_observer.schedule(event_handler, str(parent_dir), recursive=False)
+            
+            self.file_observer.start()
+            self.logger.info("🔥 File watcher started - Security filter hot-reloading ENABLED")
+            self.logger.info(f"🔥 Watching: {src_dir} and {parent_dir}")
+            print("🔥 HOT-RELOAD ENABLED: Edit security_filter.py or security_config.json to reload!")
+            
+        except Exception as e:
+            self.logger.warning(f"File watcher failed to start: {e}")
+            self.logger.info("Service will continue without hot-reloading")
+            self.file_observer = None
     
     def clear_processed_cache(self):
         """Clear the processed items cache for testing"""
@@ -647,6 +733,12 @@ class RobustClipboardService:
         except KeyboardInterrupt:
             self.logger.info("Service stopped")
         finally:
+            # Cleanup file watcher
+            if self.file_observer:
+                self.file_observer.stop()
+                self.file_observer.join()
+                self.logger.info("File watcher stopped")
+            
             self.pieces_client.close()
             self.logger.info("Service shutdown complete")
             
