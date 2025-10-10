@@ -1,14 +1,8 @@
-# Clipboard to Pieces Dependencies
-pieces-os-client>=0.0.1
-pyperclip>=1.8.2
+# Core dependencies
+pyperclip>=1.11.0
 Pillow>=10.0.0
+pieces-os-client>=4.4.1
 pywin32>=306
-watchdog>=3.0.0
 
-# OCR Dependencies (Tesseract only for privacy)
+# Optional for advanced features
 pytesseract>=0.3.10
-
-# Note: Tesseract OCR engine must be installed separately:
-# Windows: Download from https://github.com/UB-Mannheim/tesseract/wiki
-# macOS: brew install tesseract
-# Linux: sudo apt install tesseract-ocr (Ubuntu/Debian)
