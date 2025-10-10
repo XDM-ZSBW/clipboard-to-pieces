@@ -67,10 +67,21 @@ class SecurityFilter:
             ],
             'credit_cards': [
                 r'\b(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13}|3[0-9]{13}|6(?:011|5[0-9]{2})[0-9]{12})\b',
+                r'\b4\d{3}\s\d{4}\s\d{4}\s\d{4}\b',  # 4111 1111 1111 1111 format
+                r'\b4\d{3}-\d{4}-\d{4}-\d{4}\b',     # 4111-1111-1111-1111 format
             ],
             'ssn': [
                 r'\b\d{3}-\d{2}-\d{4}\b',
                 r'\b\d{3}\s\d{2}\s\d{4}\b',
+            ],
+            'phone_numbers': [
+                r'\+?1?[-.\s]?\(?[0-9]{3}\)?[-.\s]?[0-9]{3}[-.\s]?[0-9]{4}',
+                r'\+1-555-\d{3}-\d{4}',
+            ],
+            'company_secrets': [
+                r'(?i)mycompany[_-]?secret\s*[:=]\s*["\']?([^"\'\s]+)["\']?',
+                r'(?i)company[_-]?password\s*[:=]\s*["\']?([^"\'\s]+)["\']?',
+                r'(?i)internal[_-]?api[_-]?key\s*[:=]\s*["\']?([^"\'\s]+)["\']?',
             ]
         }
         
@@ -80,6 +91,9 @@ class SecurityFilter:
             r'-----BEGIN [A-Z ]+ PRIVATE KEY-----',
             r'(?i)secret[_-]?key\s*[:=]\s*["\']?([a-zA-Z0-9_-]{20,})["\']?',
             r'(?i)api[_-]?key\s*[:=]\s*["\']?([a-zA-Z0-9_-]{20,})["\']?',
+            r'(?i)mycompany[_-]?secret\s*[:=]\s*["\']?([^"\'\s]+)["\']?',
+            r'(?i)company[_-]?password\s*[:=]\s*["\']?([^"\'\s]+)["\']?',
+            r'(?i)internal[_-]?api[_-]?key\s*[:=]\s*["\']?([^"\'\s]+)["\']?',
         ]
     
     def add_custom_pattern(self, pattern: str, name: str, group: str = 'custom'):

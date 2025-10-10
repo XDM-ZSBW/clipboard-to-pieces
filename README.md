@@ -46,6 +46,8 @@ A lightweight clipboard monitoring service that automatically imports your clipb
 This service runs in the background and automatically:
 - **Monitors your clipboard** every 2 seconds
 - **Detects text and image content** 
+- **Extracts text from screenshots** using OCR (Optical Character Recognition)
+- **Applies security filtering** to detect sensitive information in both text and OCR-extracted content
 - **Compresses large images** (PNG → JPEG) for optimal storage
 - **Imports content to Pieces.app Drive** using the PiecesOS API
 - **Creates searchable memories** for AI assistance and context sharing
@@ -55,10 +57,13 @@ This service runs in the background and automatically:
 - **🔄 Automatic Clipboard Monitoring**: Runs continuously in the background
 - **📝 Text Import**: Captures and imports text content to Pieces.app
 - **🖼️ Image Import**: Captures screenshots and images with automatic compression
+- **👁️ OCR Text Extraction**: Extracts text from screenshots for security scanning
 - **🗜️ Smart Compression**: Converts large PNG files to optimized JPEG format
 - **🔍 Duplicate Detection**: Prevents importing the same content multiple times
+- **🛡️ Security Filtering**: Detects and redacts sensitive information in text and OCR content
 - **📊 Detailed Logging**: Comprehensive logging with configurable verbosity
 - **⚡ Lightweight**: Minimal resource usage, focused on core functionality
+- **🌐 Cross-Platform OCR**: Supports Windows, macOS, and Linux with multiple OCR engines
 - **🔧 Easy Setup**: Simple installation and configuration
 
 ## 🛠️ Tech Stack
@@ -67,6 +72,8 @@ This service runs in the background and automatically:
 - **PIL (Pillow)** for image processing and compression
 - **pyperclip** for clipboard monitoring
 - **win32clipboard** for Windows clipboard access
+- **OCR Engine**: Tesseract (privacy-focused, open-source)
+- **Security Filtering** for sensitive content detection
 - **Logging** for service monitoring and debugging
 
 ## 📦 Installation
@@ -244,6 +251,47 @@ Get-Content logs/robust_clipboard_service.log -Wait -Tail 20
 4. **Consider changing any exposed credentials**
 5. **Report the incident according to your organization's policies**
 
+## 👁️ OCR (Optical Character Recognition)
+
+The service includes OCR capabilities to extract text from screenshots for security filtering. This helps detect sensitive information that might be visible in images.
+
+### Supported Platforms
+
+- **Windows**: Tesseract OCR (privacy-focused)
+- **macOS**: Tesseract OCR (privacy-focused)
+- **Linux**: Tesseract OCR (privacy-focused)
+
+### OCR Features
+
+- **Automatic Text Extraction**: Extracts text from screenshots using Tesseract
+- **Security Filtering**: Applies same security patterns to OCR text
+- **Privacy-Focused**: Uses only open-source Tesseract OCR engine
+- **Local Processing**: All OCR processing happens locally
+- **No External Services**: No data sent to Microsoft, Apple, or Google
+- **Configurable**: Enable/disable OCR via configuration
+
+### Configuration
+
+OCR settings are configured in `security_config.json`:
+
+```json
+{
+  "ocr": {
+    "enabled": true,
+    "engine": "tesseract",
+    "extract_text_from_images": true,
+    "apply_security_filtering": true,
+    "skip_images_with_sensitive_text": false,
+    "privacy_mode": true,
+    "local_processing_only": true
+  }
+}
+```
+
+### Setup
+
+For detailed OCR setup instructions, see [OCR_SETUP.md](docs/OCR_SETUP.md).
+
 ## 🐛 Troubleshooting
 
 ### Common Issues
@@ -262,6 +310,12 @@ Get-Content logs/robust_clipboard_service.log -Wait -Tail 20
 - Check clipboard contains actual text content
 - Verify PiecesOS connection
 - Check service logs for error messages
+
+**OCR not working:**
+- Check OCR engine availability in startup logs
+- Verify platform-specific OCR dependencies are installed
+- Test with simple text images
+- Check OCR configuration in `security_config.json`
 
 ### Log Analysis
 

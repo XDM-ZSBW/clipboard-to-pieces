@@ -1,0 +1,346 @@
+2025-10-09 19:10:17,240 - INFO - Working Clipboard Monitoring Service Initialized
+2025-10-09 19:10:17,240 - INFO - Files will be saved to: C:\Users\dash\.pieces
+2025-10-09 19:10:17,240 - INFO - Max image size: 500000 bytes
+2025-10-09 19:10:17,240 - INFO - Starting working clipboard monitoring service (checking every 2 seconds)
+2025-10-09 19:10:17,281 - INFO - Processing new text content...
+2025-10-09 19:10:17,282 - INFO - Saved files to: C:\Users\dash\.pieces
+2025-10-09 19:10:17,282 - INFO - SUCCESS: Text content saved as Text_2025-10-09_19-10-17.txt
+2025-10-09 19:10:17,282 - INFO - Files saved to .pieces directory for auto-import
+2025-10-09 19:10:17,282 - INFO - Text content successfully saved!
+2025-10-09 19:10:47,289 - INFO - Processing new text content...
+2025-10-09 19:10:47,290 - INFO - Saved files to: C:\Users\dash\.pieces
+2025-10-09 19:10:47,290 - INFO - SUCCESS: Text content saved as Text_2025-10-09_19-10-47.txt
+2025-10-09 19:10:47,290 - INFO - Files saved to .pieces directory for auto-import
+2025-10-09 19:10:47,290 - INFO - Text content successfully saved!
+2025-10-09 19:11:17,298 - INFO - Processing new text content...
+2025-10-09 19:11:17,299 - INFO - Saved files to: C:\Users\dash\.pieces
+2025-10-09 19:11:17,299 - INFO - SUCCESS: Text content saved as Text_2025-10-09_19-11-17.txt
+2025-10-09 19:11:17,299 - INFO - Files saved to .pieces directory for auto-import
+2025-10-09 19:11:17,299 - INFO - Text content successfully saved!
+2025-10-09 19:11:22,336 - INFO - Working Clipboard Monitoring Service Initialized
+2025-10-09 19:11:22,336 - INFO - Files will be saved to: C:\Users\dash\.pieces
+2025-10-09 19:11:22,336 - INFO - Max image size: 500000 bytes
+2025-10-09 19:11:22,336 - INFO - Starting working clipboard monitoring service (checking every 2 seconds)
+2025-10-09 19:11:22,377 - INFO - Processing new text content...
+2025-10-09 19:11:22,378 - INFO - Saved files to: C:\Users\dash\.pieces
+2025-10-09 19:11:22,378 - INFO - SUCCESS: Text content saved as Text_2025-10-09_19-11-22.txt
+2025-10-09 19:11:22,378 - INFO - Files saved to .pieces directory for auto-import
+2025-10-09 19:11:22,378 - INFO - Text content successfully saved!
+2025-10-09 19:11:42,383 - INFO - Processing new image content...
+2025-10-09 19:11:42,431 - INFO - Saved valid image: C:\Users\dash\AppData\Local\Temp\tmpj471j2_h.png
+2025-10-09 19:11:42,436 - INFO - Compressed image: 5340 bytes (quality: 90)
+2025-10-09 19:11:42,438 - INFO - Saved files to: C:\Users\dash\.pieces
+2025-10-09 19:11:42,438 - INFO - SUCCESS: Image content saved as Screenshot_2025-10-09_19-11-42.jpg
+2025-10-09 19:11:42,438 - INFO - Files saved to .pieces directory for auto-import
+2025-10-09 19:11:42,438 - INFO - Image content successfully saved!
+2025-10-09 19:11:43,304 - INFO - Processing new image content...
+2025-10-09 19:11:43,325 - INFO - Saved valid image: C:\Users\dash\AppData\Local\Temp\tmpt3ldvff4.png
+2025-10-09 19:11:43,327 - INFO - Compressed image: 5340 bytes (quality: 90)
+2025-10-09 19:11:43,328 - INFO - Saved files to: C:\Users\dash\.pieces
+2025-10-09 19:11:43,329 - INFO - SUCCESS: Image content saved as Screenshot_2025-10-09_19-11-43.jpg
+2025-10-09 19:11:43,329 - INFO - Files saved to .pieces directory for auto-import
+2025-10-09 19:11:43,329 - INFO - Image content successfully saved!
+2025-10-09 19:12:12,448 - INFO - Processing new image content...
+2025-10-09 19:12:12,458 - INFO - Saved valid image: C:\Users\dash\AppData\Local\Temp\tmprqjb1q6n.png
+2025-10-09 19:12:12,460 - INFO - Compressed image: 5340 bytes (quality: 90)
+2025-10-09 19:12:12,461 - INFO - Saved files to: C:\Users\dash\.pieces
+2025-10-09 19:12:12,461 - INFO - SUCCESS: Image content saved as Screenshot_2025-10-09_19-12-12.jpg
+2025-10-09 19:12:12,461 - INFO - Files saved to .pieces directory for auto-import
+2025-10-09 19:12:12,461 - INFO - Image content successfully saved!
+2025-10-09 19:12:13,339 - INFO - Processing new image content...
+2025-10-09 19:12:13,356 - INFO - Saved valid image: C:\Users\dash\AppData\Local\Temp\tmpo2eossap.png
+2025-10-09 19:12:13,359 - INFO - Compressed image: 5340 bytes (quality: 90)
+2025-10-09 19:12:13,361 - INFO - Saved files to: C:\Users\dash\.pieces
+2025-10-09 19:12:13,362 - INFO - SUCCESS: Image content saved as Screenshot_2025-10-09_19-12-13.jpg
+2025-10-09 19:12:13,362 - INFO - Files saved to .pieces directory for auto-import
+2025-10-09 19:12:13,362 - INFO - Image content successfully saved!
+2025-10-09 19:12:42,473 - INFO - Processing new image content...
+2025-10-09 19:12:42,483 - INFO - Saved valid image: C:\Users\dash\AppData\Local\Temp\tmpb4xrgtyv.png
+2025-10-09 19:12:42,484 - INFO - Compressed image: 5340 bytes (quality: 90)
+2025-10-09 19:12:42,486 - INFO - Saved files to: C:\Users\dash\.pieces
+2025-10-09 19:12:42,486 - INFO - SUCCESS: Image content saved as Screenshot_2025-10-09_19-12-42.jpg
+2025-10-09 19:12:42,486 - INFO - Files saved to .pieces directory for auto-import
+2025-10-09 19:12:42,486 - INFO - Image content successfully saved!
+2025-10-09 19:12:43,373 - INFO - Processing new image content...
+2025-10-09 19:12:43,382 - INFO - Saved valid image: C:\Users\dash\AppData\Local\Temp\tmp4btbl25v.png
+2025-10-09 19:12:43,384 - INFO - Compressed image: 5340 bytes (quality: 90)
+2025-10-09 19:12:43,385 - INFO - Saved files to: C:\Users\dash\.pieces
+2025-10-09 19:12:43,386 - INFO - SUCCESS: Image content saved as Screenshot_2025-10-09_19-12-43.jpg
+2025-10-09 19:12:43,386 - INFO - Files saved to .pieces directory for auto-import
+2025-10-09 19:12:43,386 - INFO - Image content successfully saved!
+2025-10-09 19:13:12,530 - INFO - Processing new image content...
+2025-10-09 19:13:12,542 - INFO - Saved valid image: C:\Users\dash\AppData\Local\Temp\tmpuy8w77it.png
+2025-10-09 19:13:12,544 - INFO - Compressed image: 5340 bytes (quality: 90)
+2025-10-09 19:13:12,545 - INFO - Saved files to: C:\Users\dash\.pieces
+2025-10-09 19:13:12,546 - INFO - SUCCESS: Image content saved as Screenshot_2025-10-09_19-13-12.jpg
+2025-10-09 19:13:12,546 - INFO - Files saved to .pieces directory for auto-import
+2025-10-09 19:13:12,546 - INFO - Image content successfully saved!
+2025-10-09 19:13:13,399 - INFO - Processing new image content...
+2025-10-09 19:13:13,408 - INFO - Saved valid image: C:\Users\dash\AppData\Local\Temp\tmp2folwf2w.png
+2025-10-09 19:13:13,409 - INFO - Compressed image: 5340 bytes (quality: 90)
+2025-10-09 19:13:13,411 - INFO - Saved files to: C:\Users\dash\.pieces
+2025-10-09 19:13:13,412 - INFO - SUCCESS: Image content saved as Screenshot_2025-10-09_19-13-13.jpg
+2025-10-09 19:13:13,412 - INFO - Files saved to .pieces directory for auto-import
+2025-10-09 19:13:13,412 - INFO - Image content successfully saved!
+2025-10-09 19:13:42,558 - INFO - Processing new image content...
+2025-10-09 19:13:42,574 - INFO - Saved valid image: C:\Users\dash\AppData\Local\Temp\tmpqv_reb09.png
+2025-10-09 19:13:42,576 - INFO - Compressed image: 5340 bytes (quality: 90)
+2025-10-09 19:13:42,578 - INFO - Saved files to: C:\Users\dash\.pieces
+2025-10-09 19:13:42,579 - INFO - SUCCESS: Image content saved as Screenshot_2025-10-09_19-13-42.jpg
+2025-10-09 19:13:42,579 - INFO - Files saved to .pieces directory for auto-import
+2025-10-09 19:13:42,579 - INFO - Image content successfully saved!
+2025-10-09 19:13:43,423 - INFO - Processing new image content...
+2025-10-09 19:13:43,435 - INFO - Saved valid image: C:\Users\dash\AppData\Local\Temp\tmpvwl4r_oh.png
+2025-10-09 19:13:43,438 - INFO - Compressed image: 5340 bytes (quality: 90)
+2025-10-09 19:13:43,440 - INFO - Saved files to: C:\Users\dash\.pieces
+2025-10-09 19:13:43,441 - INFO - SUCCESS: Image content saved as Screenshot_2025-10-09_19-13-43.jpg
+2025-10-09 19:13:43,441 - INFO - Files saved to .pieces directory for auto-import
+2025-10-09 19:13:43,441 - INFO - Image content successfully saved!
+2025-10-09 19:13:58,602 - INFO - Processing new image content...
+2025-10-09 19:13:58,613 - INFO - Saved valid image: C:\Users\dash\AppData\Local\Temp\tmp_n848vo3.png
+2025-10-09 19:13:58,648 - INFO - Resized image to (1493, 1080)
+2025-10-09 19:13:58,656 - INFO - Compressed image: 145446 bytes (quality: 90)
+2025-10-09 19:13:58,658 - INFO - Saved files to: C:\Users\dash\.pieces
+2025-10-09 19:13:58,659 - INFO - SUCCESS: Image content saved as Screenshot_2025-10-09_19-13-58.jpg
+2025-10-09 19:13:58,659 - INFO - Files saved to .pieces directory for auto-import
+2025-10-09 19:13:58,659 - INFO - Image content successfully saved!
+2025-10-09 19:13:59,460 - INFO - Processing new image content...
+2025-10-09 19:13:59,474 - INFO - Saved valid image: C:\Users\dash\AppData\Local\Temp\tmp6cjygnyl.png
+2025-10-09 19:13:59,513 - INFO - Resized image to (1493, 1080)
+2025-10-09 19:13:59,524 - INFO - Compressed image: 145446 bytes (quality: 90)
+2025-10-09 19:13:59,526 - INFO - Saved files to: C:\Users\dash\.pieces
+2025-10-09 19:13:59,527 - INFO - SUCCESS: Image content saved as Screenshot_2025-10-09_19-13-59.jpg
+2025-10-09 19:13:59,527 - INFO - Files saved to .pieces directory for auto-import
+2025-10-09 19:13:59,527 - INFO - Image content successfully saved!
+2025-10-09 19:14:28,848 - INFO - Processing new image content...
+2025-10-09 19:14:28,861 - INFO - Saved valid image: C:\Users\dash\AppData\Local\Temp\tmp6chiv_90.png
+2025-10-09 19:14:28,896 - INFO - Resized image to (1493, 1080)
+2025-10-09 19:14:28,904 - INFO - Compressed image: 145446 bytes (quality: 90)
+2025-10-09 19:14:28,906 - INFO - Saved files to: C:\Users\dash\.pieces
+2025-10-09 19:14:28,907 - INFO - SUCCESS: Image content saved as Screenshot_2025-10-09_19-14-28.jpg
+2025-10-09 19:14:28,907 - INFO - Files saved to .pieces directory for auto-import
+2025-10-09 19:14:28,907 - INFO - Image content successfully saved!
+2025-10-09 19:14:29,710 - INFO - Processing new image content...
+2025-10-09 19:14:29,723 - INFO - Saved valid image: C:\Users\dash\AppData\Local\Temp\tmpb9bw80lc.png
+2025-10-09 19:14:29,758 - INFO - Resized image to (1493, 1080)
+2025-10-09 19:14:29,767 - INFO - Compressed image: 145446 bytes (quality: 90)
+2025-10-09 19:14:29,769 - INFO - Saved files to: C:\Users\dash\.pieces
+2025-10-09 19:14:29,771 - INFO - SUCCESS: Image content saved as Screenshot_2025-10-09_19-14-29.jpg
+2025-10-09 19:14:29,771 - INFO - Files saved to .pieces directory for auto-import
+2025-10-09 19:14:29,771 - INFO - Image content successfully saved!
+2025-10-09 19:14:59,098 - INFO - Processing new image content...
+2025-10-09 19:14:59,111 - INFO - Saved valid image: C:\Users\dash\AppData\Local\Temp\tmpptz4knzg.png
+2025-10-09 19:14:59,145 - INFO - Resized image to (1493, 1080)
+2025-10-09 19:14:59,153 - INFO - Compressed image: 145446 bytes (quality: 90)
+2025-10-09 19:14:59,155 - INFO - Saved files to: C:\Users\dash\.pieces
+2025-10-09 19:14:59,156 - INFO - SUCCESS: Image content saved as Screenshot_2025-10-09_19-14-59.jpg
+2025-10-09 19:14:59,156 - INFO - Files saved to .pieces directory for auto-import
+2025-10-09 19:14:59,156 - INFO - Image content successfully saved!
+2025-10-09 19:14:59,958 - INFO - Processing new image content...
+2025-10-09 19:14:59,972 - INFO - Saved valid image: C:\Users\dash\AppData\Local\Temp\tmpa1xmeeko.png
+2025-10-09 19:15:00,007 - INFO - Resized image to (1493, 1080)
+2025-10-09 19:15:00,019 - INFO - Compressed image: 145446 bytes (quality: 90)
+2025-10-09 19:15:00,021 - INFO - Saved files to: C:\Users\dash\.pieces
+2025-10-09 19:15:00,022 - INFO - SUCCESS: Image content saved as Screenshot_2025-10-09_19-14-59.jpg
+2025-10-09 19:15:00,022 - INFO - Files saved to .pieces directory for auto-import
+2025-10-09 19:15:00,022 - INFO - Image content successfully saved!
+2025-10-09 19:15:29,348 - INFO - Processing new image content...
+2025-10-09 19:15:29,360 - INFO - Saved valid image: C:\Users\dash\AppData\Local\Temp\tmpi4qtt13t.png
+2025-10-09 19:15:29,395 - INFO - Resized image to (1493, 1080)
+2025-10-09 19:15:29,404 - INFO - Compressed image: 145446 bytes (quality: 90)
+2025-10-09 19:15:29,405 - INFO - Saved files to: C:\Users\dash\.pieces
+2025-10-09 19:15:29,406 - INFO - SUCCESS: Image content saved as Screenshot_2025-10-09_19-15-29.jpg
+2025-10-09 19:15:29,406 - INFO - Files saved to .pieces directory for auto-import
+2025-10-09 19:15:29,406 - INFO - Image content successfully saved!
+2025-10-09 19:15:30,204 - INFO - Processing new image content...
+2025-10-09 19:15:30,219 - INFO - Saved valid image: C:\Users\dash\AppData\Local\Temp\tmpa_t_x4ig.png
+2025-10-09 19:15:30,260 - INFO - Resized image to (1493, 1080)
+2025-10-09 19:15:30,270 - INFO - Compressed image: 145446 bytes (quality: 90)
+2025-10-09 19:15:30,272 - INFO - Saved files to: C:\Users\dash\.pieces
+2025-10-09 19:15:30,273 - INFO - SUCCESS: Image content saved as Screenshot_2025-10-09_19-15-30.jpg
+2025-10-09 19:15:30,273 - INFO - Files saved to .pieces directory for auto-import
+2025-10-09 19:15:30,273 - INFO - Image content successfully saved!
+2025-10-09 19:15:59,593 - INFO - Processing new image content...
+2025-10-09 19:15:59,607 - INFO - Saved valid image: C:\Users\dash\AppData\Local\Temp\tmpmlp10uq_.png
+2025-10-09 19:15:59,643 - INFO - Resized image to (1493, 1080)
+2025-10-09 19:15:59,652 - INFO - Compressed image: 145446 bytes (quality: 90)
+2025-10-09 19:15:59,654 - INFO - Saved files to: C:\Users\dash\.pieces
+2025-10-09 19:15:59,655 - INFO - SUCCESS: Image content saved as Screenshot_2025-10-09_19-15-59.jpg
+2025-10-09 19:15:59,655 - INFO - Files saved to .pieces directory for auto-import
+2025-10-09 19:15:59,655 - INFO - Image content successfully saved!
+2025-10-09 19:16:00,471 - INFO - Processing new image content...
+2025-10-09 19:16:00,486 - INFO - Saved valid image: C:\Users\dash\AppData\Local\Temp\tmp5414xudu.png
+2025-10-09 19:16:00,525 - INFO - Resized image to (1493, 1080)
+2025-10-09 19:16:00,536 - INFO - Compressed image: 145446 bytes (quality: 90)
+2025-10-09 19:16:00,539 - INFO - Saved files to: C:\Users\dash\.pieces
+2025-10-09 19:16:00,540 - INFO - SUCCESS: Image content saved as Screenshot_2025-10-09_19-16-00.jpg
+2025-10-09 19:16:00,540 - INFO - Files saved to .pieces directory for auto-import
+2025-10-09 19:16:00,540 - INFO - Image content successfully saved!
+2025-10-09 19:16:29,846 - INFO - Processing new image content...
+2025-10-09 19:16:29,859 - INFO - Saved valid image: C:\Users\dash\AppData\Local\Temp\tmp5owisyzk.png
+2025-10-09 19:16:29,894 - INFO - Resized image to (1493, 1080)
+2025-10-09 19:16:29,902 - INFO - Compressed image: 145446 bytes (quality: 90)
+2025-10-09 19:16:29,904 - INFO - Saved files to: C:\Users\dash\.pieces
+2025-10-09 19:16:29,905 - INFO - SUCCESS: Image content saved as Screenshot_2025-10-09_19-16-29.jpg
+2025-10-09 19:16:29,905 - INFO - Files saved to .pieces directory for auto-import
+2025-10-09 19:16:29,905 - INFO - Image content successfully saved!
+2025-10-09 19:16:30,727 - INFO - Processing new image content...
+2025-10-09 19:16:30,740 - INFO - Saved valid image: C:\Users\dash\AppData\Local\Temp\tmpopkxrjgu.png
+2025-10-09 19:16:30,775 - INFO - Resized image to (1493, 1080)
+2025-10-09 19:16:30,784 - INFO - Compressed image: 145446 bytes (quality: 90)
+2025-10-09 19:16:30,785 - INFO - Saved files to: C:\Users\dash\.pieces
+2025-10-09 19:16:30,786 - INFO - SUCCESS: Image content saved as Screenshot_2025-10-09_19-16-30.jpg
+2025-10-09 19:16:30,787 - INFO - Files saved to .pieces directory for auto-import
+2025-10-09 19:16:30,787 - INFO - Image content successfully saved!
+2025-10-09 19:16:37,951 - INFO - Processing new image content...
+2025-10-09 19:16:37,964 - INFO - Saved valid image: C:\Users\dash\AppData\Local\Temp\tmpq02z54jr.png
+2025-10-09 19:16:37,968 - INFO - Compressed image: 49372 bytes (quality: 90)
+2025-10-09 19:16:37,970 - INFO - Saved files to: C:\Users\dash\.pieces
+2025-10-09 19:16:37,970 - INFO - SUCCESS: Image content saved as Screenshot_2025-10-09_19-16-37.jpg
+2025-10-09 19:16:37,970 - INFO - Files saved to .pieces directory for auto-import
+2025-10-09 19:16:37,970 - INFO - Image content successfully saved!
+2025-10-09 19:16:38,826 - INFO - Processing new image content...
+2025-10-09 19:16:38,837 - INFO - Saved valid image: C:\Users\dash\AppData\Local\Temp\tmpwhy7svb3.png
+2025-10-09 19:16:38,840 - INFO - Compressed image: 49372 bytes (quality: 90)
+2025-10-09 19:16:38,842 - INFO - Saved files to: C:\Users\dash\.pieces
+2025-10-09 19:16:38,842 - INFO - SUCCESS: Image content saved as Screenshot_2025-10-09_19-16-38.jpg
+2025-10-09 19:16:38,842 - INFO - Files saved to .pieces directory for auto-import
+2025-10-09 19:16:38,842 - INFO - Image content successfully saved!
+2025-10-09 19:16:50,948 - ERROR - Failed to connect to Pieces.app: name 'PiecesClient' is not defined
+2025-10-09 19:16:50,949 - INFO - Working Clipboard Monitoring Service Initialized
+2025-10-09 19:16:50,949 - INFO - Files will be saved to: C:\Users\dash\.pieces
+2025-10-09 19:16:50,949 - INFO - Max image size: 500000 bytes
+2025-10-09 19:16:50,949 - INFO - Starting working clipboard monitoring service (checking every 2 seconds)
+2025-10-09 19:16:50,951 - INFO - Processing new image content...
+2025-10-09 19:16:50,977 - INFO - Saved valid image: C:\Users\dash\AppData\Local\Temp\tmpc4w4pmf7.png
+2025-10-09 19:16:50,981 - INFO - Compressed image: 49372 bytes (quality: 90)
+2025-10-09 19:16:50,981 - WARNING - Pieces client not available, skipping upload
+2025-10-09 19:16:50,983 - INFO - Saved backup files to: C:\Users\dash\.pieces
+2025-10-09 19:16:50,983 - INFO - SUCCESS: Image content saved as backup
+2025-10-09 19:16:50,984 - INFO - Image content successfully saved!
+2025-10-09 19:17:08,001 - INFO - Processing new image content...
+2025-10-09 19:17:08,011 - INFO - Saved valid image: C:\Users\dash\AppData\Local\Temp\tmp8iz0hni4.png
+2025-10-09 19:17:08,015 - INFO - Compressed image: 49372 bytes (quality: 90)
+2025-10-09 19:17:08,016 - INFO - Saved files to: C:\Users\dash\.pieces
+2025-10-09 19:17:08,017 - INFO - SUCCESS: Image content saved as Screenshot_2025-10-09_19-17-08.jpg
+2025-10-09 19:17:08,017 - INFO - Files saved to .pieces directory for auto-import
+2025-10-09 19:17:08,017 - INFO - Image content successfully saved!
+2025-10-09 19:17:08,868 - INFO - Processing new image content...
+2025-10-09 19:17:08,878 - INFO - Saved valid image: C:\Users\dash\AppData\Local\Temp\tmpnn9ucu3k.png
+2025-10-09 19:17:08,881 - INFO - Compressed image: 49372 bytes (quality: 90)
+2025-10-09 19:17:08,883 - INFO - Saved files to: C:\Users\dash\.pieces
+2025-10-09 19:17:08,883 - INFO - SUCCESS: Image content saved as Screenshot_2025-10-09_19-17-08.jpg
+2025-10-09 19:17:08,883 - INFO - Files saved to .pieces directory for auto-import
+2025-10-09 19:17:08,883 - INFO - Image content successfully saved!
+2025-10-09 19:17:21,010 - INFO - Processing new image content...
+2025-10-09 19:17:21,022 - INFO - Saved valid image: C:\Users\dash\AppData\Local\Temp\tmpq69gcbba.png
+2025-10-09 19:17:21,025 - INFO - Compressed image: 49372 bytes (quality: 90)
+2025-10-09 19:17:21,025 - WARNING - Pieces client not available, skipping upload
+2025-10-09 19:17:21,027 - INFO - Saved backup files to: C:\Users\dash\.pieces
+2025-10-09 19:17:21,028 - INFO - SUCCESS: Image content saved as backup
+2025-10-09 19:17:21,028 - INFO - Image content successfully saved!
+2025-10-09 19:17:38,043 - INFO - Processing new image content...
+2025-10-09 19:17:38,052 - INFO - Saved valid image: C:\Users\dash\AppData\Local\Temp\tmpvo9bsv0s.png
+2025-10-09 19:17:38,054 - INFO - Compressed image: 49372 bytes (quality: 90)
+2025-10-09 19:17:38,056 - INFO - Saved files to: C:\Users\dash\.pieces
+2025-10-09 19:17:38,056 - INFO - SUCCESS: Image content saved as Screenshot_2025-10-09_19-17-38.jpg
+2025-10-09 19:17:38,056 - INFO - Files saved to .pieces directory for auto-import
+2025-10-09 19:17:38,056 - INFO - Image content successfully saved!
+2025-10-09 19:17:38,910 - INFO - Processing new image content...
+2025-10-09 19:17:38,919 - INFO - Saved valid image: C:\Users\dash\AppData\Local\Temp\tmpeta0j4z8.png
+2025-10-09 19:17:38,922 - INFO - Compressed image: 49372 bytes (quality: 90)
+2025-10-09 19:17:38,923 - INFO - Saved files to: C:\Users\dash\.pieces
+2025-10-09 19:17:38,923 - INFO - SUCCESS: Image content saved as Screenshot_2025-10-09_19-17-38.jpg
+2025-10-09 19:17:38,923 - INFO - Files saved to .pieces directory for auto-import
+2025-10-09 19:17:38,924 - INFO - Image content successfully saved!
+2025-10-09 19:17:51,053 - INFO - Processing new image content...
+2025-10-09 19:17:51,063 - INFO - Saved valid image: C:\Users\dash\AppData\Local\Temp\tmp6umobh_x.png
+2025-10-09 19:17:51,066 - INFO - Compressed image: 49372 bytes (quality: 90)
+2025-10-09 19:17:51,066 - WARNING - Pieces client not available, skipping upload
+2025-10-09 19:17:51,067 - INFO - Saved backup files to: C:\Users\dash\.pieces
+2025-10-09 19:17:51,068 - INFO - SUCCESS: Image content saved as backup
+2025-10-09 19:17:51,068 - INFO - Image content successfully saved!
+2025-10-09 19:18:08,081 - INFO - Processing new image content...
+2025-10-09 19:18:08,094 - INFO - Saved valid image: C:\Users\dash\AppData\Local\Temp\tmplob6govc.png
+2025-10-09 19:18:08,099 - INFO - Compressed image: 49372 bytes (quality: 90)
+2025-10-09 19:18:08,101 - INFO - Saved files to: C:\Users\dash\.pieces
+2025-10-09 19:18:08,102 - INFO - SUCCESS: Image content saved as Screenshot_2025-10-09_19-18-08.jpg
+2025-10-09 19:18:08,102 - INFO - Files saved to .pieces directory for auto-import
+2025-10-09 19:18:08,102 - INFO - Image content successfully saved!
+2025-10-09 19:18:08,947 - INFO - Processing new image content...
+2025-10-09 19:18:08,957 - INFO - Saved valid image: C:\Users\dash\AppData\Local\Temp\tmpwp13drfe.png
+2025-10-09 19:18:08,961 - INFO - Compressed image: 49372 bytes (quality: 90)
+2025-10-09 19:18:08,962 - INFO - Saved files to: C:\Users\dash\.pieces
+2025-10-09 19:18:08,963 - INFO - SUCCESS: Image content saved as Screenshot_2025-10-09_19-18-08.jpg
+2025-10-09 19:18:08,963 - INFO - Files saved to .pieces directory for auto-import
+2025-10-09 19:18:08,963 - INFO - Image content successfully saved!
+2025-10-09 19:18:21,092 - INFO - Processing new image content...
+2025-10-09 19:18:21,102 - INFO - Saved valid image: C:\Users\dash\AppData\Local\Temp\tmpxhp7pn5y.png
+2025-10-09 19:18:21,107 - INFO - Compressed image: 49372 bytes (quality: 90)
+2025-10-09 19:18:21,107 - WARNING - Pieces client not available, skipping upload
+2025-10-09 19:18:21,109 - INFO - Saved backup files to: C:\Users\dash\.pieces
+2025-10-09 19:18:21,109 - INFO - SUCCESS: Image content saved as backup
+2025-10-09 19:18:21,110 - INFO - Image content successfully saved!
+2025-10-09 19:18:38,126 - INFO - Processing new image content...
+2025-10-09 19:18:38,136 - INFO - Saved valid image: C:\Users\dash\AppData\Local\Temp\tmpfua3l9m1.png
+2025-10-09 19:18:38,140 - INFO - Compressed image: 49372 bytes (quality: 90)
+2025-10-09 19:18:38,141 - INFO - Saved files to: C:\Users\dash\.pieces
+2025-10-09 19:18:38,142 - INFO - SUCCESS: Image content saved as Screenshot_2025-10-09_19-18-38.jpg
+2025-10-09 19:18:38,142 - INFO - Files saved to .pieces directory for auto-import
+2025-10-09 19:18:38,142 - INFO - Image content successfully saved!
+2025-10-09 19:18:38,990 - INFO - Processing new image content...
+2025-10-09 19:18:39,000 - INFO - Saved valid image: C:\Users\dash\AppData\Local\Temp\tmpyeovmord.png
+2025-10-09 19:18:39,004 - INFO - Compressed image: 49372 bytes (quality: 90)
+2025-10-09 19:18:39,005 - INFO - Saved files to: C:\Users\dash\.pieces
+2025-10-09 19:18:39,006 - INFO - SUCCESS: Image content saved as Screenshot_2025-10-09_19-18-38.jpg
+2025-10-09 19:18:39,006 - INFO - Files saved to .pieces directory for auto-import
+2025-10-09 19:18:39,006 - INFO - Image content successfully saved!
+2025-10-09 19:18:51,135 - INFO - Processing new image content...
+2025-10-09 19:18:51,145 - INFO - Saved valid image: C:\Users\dash\AppData\Local\Temp\tmpt5m8rhac.png
+2025-10-09 19:18:51,148 - INFO - Compressed image: 49372 bytes (quality: 90)
+2025-10-09 19:18:51,149 - WARNING - Pieces client not available, skipping upload
+2025-10-09 19:18:51,150 - INFO - Saved backup files to: C:\Users\dash\.pieces
+2025-10-09 19:18:51,151 - INFO - SUCCESS: Image content saved as backup
+2025-10-09 19:18:51,151 - INFO - Image content successfully saved!
+2025-10-09 19:19:08,166 - INFO - Processing new image content...
+2025-10-09 19:19:08,178 - INFO - Saved valid image: C:\Users\dash\AppData\Local\Temp\tmpc2tuw7n9.png
+2025-10-09 19:19:08,183 - INFO - Compressed image: 49372 bytes (quality: 90)
+2025-10-09 19:19:08,185 - INFO - Saved files to: C:\Users\dash\.pieces
+2025-10-09 19:19:08,186 - INFO - SUCCESS: Image content saved as Screenshot_2025-10-09_19-19-08.jpg
+2025-10-09 19:19:08,186 - INFO - Files saved to .pieces directory for auto-import
+2025-10-09 19:19:08,186 - INFO - Image content successfully saved!
+2025-10-09 19:19:09,036 - INFO - Processing new image content...
+2025-10-09 19:19:09,053 - INFO - Saved valid image: C:\Users\dash\AppData\Local\Temp\tmp6z1rhaa5.png
+2025-10-09 19:19:09,060 - INFO - Compressed image: 49372 bytes (quality: 90)
+2025-10-09 19:19:09,062 - INFO - Saved files to: C:\Users\dash\.pieces
+2025-10-09 19:19:09,063 - INFO - SUCCESS: Image content saved as Screenshot_2025-10-09_19-19-09.jpg
+2025-10-09 19:19:09,063 - INFO - Files saved to .pieces directory for auto-import
+2025-10-09 19:19:09,063 - INFO - Image content successfully saved!
+2025-10-09 19:19:21,183 - INFO - Processing new image content...
+2025-10-09 19:19:21,193 - INFO - Saved valid image: C:\Users\dash\AppData\Local\Temp\tmpl3hr0is5.png
+2025-10-09 19:19:21,198 - INFO - Compressed image: 49372 bytes (quality: 90)
+2025-10-09 19:19:21,198 - WARNING - Pieces client not available, skipping upload
+2025-10-09 19:19:21,199 - INFO - Saved backup files to: C:\Users\dash\.pieces
+2025-10-09 19:19:21,200 - INFO - SUCCESS: Image content saved as backup
+2025-10-09 19:19:21,200 - INFO - Image content successfully saved!
+2025-10-09 19:19:38,212 - INFO - Processing new image content...
+2025-10-09 19:19:38,224 - INFO - Saved valid image: C:\Users\dash\AppData\Local\Temp\tmps90e2c11.png
+2025-10-09 19:19:38,229 - INFO - Compressed image: 49372 bytes (quality: 90)
+2025-10-09 19:19:38,231 - INFO - Saved files to: C:\Users\dash\.pieces
+2025-10-09 19:19:38,232 - INFO - SUCCESS: Image content saved as Screenshot_2025-10-09_19-19-38.jpg
+2025-10-09 19:19:38,232 - INFO - Files saved to .pieces directory for auto-import
+2025-10-09 19:19:38,232 - INFO - Image content successfully saved!
+2025-10-09 19:19:39,096 - INFO - Processing new image content...
+2025-10-09 19:19:39,112 - INFO - Saved valid image: C:\Users\dash\AppData\Local\Temp\tmpg07ek8t1.png
+2025-10-09 19:19:39,117 - INFO - Compressed image: 49372 bytes (quality: 90)
+2025-10-09 19:19:39,119 - INFO - Saved files to: C:\Users\dash\.pieces
+2025-10-09 19:19:39,120 - INFO - SUCCESS: Image content saved as Screenshot_2025-10-09_19-19-39.jpg
+2025-10-09 19:19:39,121 - INFO - Files saved to .pieces directory for auto-import
+2025-10-09 19:19:39,121 - INFO - Image content successfully saved!
+2025-10-09 19:19:51,227 - INFO - Processing new image content...
+2025-10-09 19:19:51,236 - INFO - Saved valid image: C:\Users\dash\AppData\Local\Temp\tmpu3pax734.png
+2025-10-09 19:19:51,239 - INFO - Compressed image: 49372 bytes (quality: 90)
+2025-10-09 19:19:51,239 - WARNING - Pieces client not available, skipping upload
+2025-10-09 19:19:51,240 - INFO - Saved backup files to: C:\Users\dash\.pieces
+2025-10-09 19:19:51,241 - INFO - SUCCESS: Image content saved as backup
+2025-10-09 19:19:51,241 - INFO - Image content successfully saved!

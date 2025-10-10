@@ -4,3 +4,11 @@ pyperclip>=1.8.2
 Pillow>=10.0.0
 pywin32>=306
 watchdog>=3.0.0
+
+# OCR Dependencies (Tesseract only for privacy)
+pytesseract>=0.3.10
+
+# Note: Tesseract OCR engine must be installed separately:
+# Windows: Download from https://github.com/UB-Mannheim/tesseract/wiki
+# macOS: brew install tesseract
+# Linux: sudo apt install tesseract-ocr (Ubuntu/Debian)

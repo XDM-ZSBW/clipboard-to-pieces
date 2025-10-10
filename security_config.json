@@ -15,5 +15,15 @@
         "group": "custom"
       }
     ]
-  }
+  },
+    "ocr": {
+        "enabled": false,
+        "engine": "tesseract",
+        "extract_text_from_images": false,
+        "apply_security_filtering": false,
+        "skip_images_with_sensitive_text": false,
+        "privacy_mode": true,
+        "local_processing_only": true,
+        "visual_redaction": false
+    }
 }
